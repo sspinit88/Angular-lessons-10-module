@@ -1,24 +1,22 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {HomePageComponent} from './home-page/home-page.component';
-
-// из app.module удаляем 'CarsModule'
 
 const appRoutes: Routes = [
     {path: '', component: HomePageComponent},
-    // создаем объект, который будет отвечать за роут машин
-    // loadChildren - будет подгружать компонент тогда, когда нам нужно
-    // указыввает путь до модуля, а также, через '#', указывается название класса,
-    // который нужно подгрузить
-
-    // для избегания задваивания удаляем 'cars' из CarsRoutingModule
-
     {path: 'cars', loadChildren: './cars-page/cars.module#CarsModule'}
 
 ];
 
+// .forRoot() может принимать второй параметр, который является объектом
+// у этого объекта, есть поле preloadingStrategy, который принимает класс PreloadAllModules
+// теперь работает прелоадинг страницы
+
+
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, {
+        preloadingStrategy: PreloadAllModules
+    })],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

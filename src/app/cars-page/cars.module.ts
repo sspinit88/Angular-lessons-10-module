@@ -7,7 +7,6 @@ import {CarsService} from '../cars.service';
 import {CarsRoutingModule} from './cars-routing.module';
 import {SharedModule} from '../shared/shared.module';
 
-// добавляем @NgModule, в нем будут регистрироваться компоненты в массиве "declarations"
 @NgModule({
     declarations: [
         CarsPageComponent,
@@ -16,17 +15,11 @@ import {SharedModule} from '../shared/shared.module';
     providers: [
         CarsService
     ],
-    // важно подключать CommonModule, что бы основные команды работали в этом изолированном модуле
     imports: [
         CommonModule,
         CarsRoutingModule,
         SharedModule
     ]
 })
-
-// регистрация модуля осуществляется по его названию в корневом модуле, то есть в app.module.ts
-// регистрация проводится в массиве 'imports'
-
-// ! важно подключить роутинг модуль (cars-routing.module.ts)
 
 export class CarsModule {}
