@@ -3,23 +3,20 @@ import {RouterModule, Routes} from '@angular/router';
 import {CarPageComponent} from './car-page/car-page.component';
 import {CarsPageComponent} from './cars-page.component';
 
-// тут описываем все роуты, относящиеся к машинам
+// для избегания задваивания удаляем 'cars' из CarsRoutingModule
+// пустая строка автоматически будет заменяться на 'cars'
 const carsRoutes: Routes = [
     {
-        path: 'cars', component: CarsPageComponent, children: [
+        path: '', component: CarsPageComponent, children: [
             {path: ':id/:name', component: CarPageComponent}
         ]
     },
 ];
 
-// ! используется метод '.forChild()' , так как это дочерние компоненты
-
 @NgModule({
     imports: [RouterModule.forChild(carsRoutes)],
     exports: [RouterModule]
 })
-
-// регистрируем модуль в cars.module.ts
 
 export class CarsRoutingModule {
 }
