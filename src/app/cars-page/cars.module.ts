@@ -5,6 +5,7 @@ import {CarPageComponent} from './car-page/car-page.component';
 import {CarsPageComponent} from './cars-page.component';
 import {CarsService} from '../cars.service';
 import {CarsRoutingModule} from './cars-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 // добавляем @NgModule, в нем будут регистрироваться компоненты в массиве "declarations"
 @NgModule({
@@ -18,7 +19,8 @@ import {CarsRoutingModule} from './cars-routing.module';
     // важно подключать CommonModule, что бы основные команды работали в этом изолированном модуле
     imports: [
         CommonModule,
-        CarsRoutingModule
+        CarsRoutingModule,
+        SharedModule
     ]
 })
 

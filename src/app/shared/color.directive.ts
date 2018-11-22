@@ -10,3 +10,6 @@ export class ColorDirective implements OnInit {
     this.color = 'blue';
   }
 }
+
+// для того, что бы сущьность корректно работала во всех модулях,
+// она должна лежать в своем собственном модуле (shared.module.ts)
